@@ -2,13 +2,13 @@
 Contributors: beaulebens, r-a-y, andykillen
 Tags: email, login, authentication, users, admin
 Requires at least: 2.8
-Tested up to: 3.3
+Tested up to: 3.6
 Stable tag: trunk
 
-Lets you use your email address to log into your WordPress account instead of a username.
+Use your email address instead of a username to log into your WordPress.
 
 == Description ==
-Lets you use your email address to log into your WordPress account instead of a username.
+Use your email address instead of a username to log into your WordPress.
 
 Since email addresses are required to be unique within WordPress anyway, they also make good identifiers for logging in. For slightly better security, set your username to something random and then just forget it and use your email address instead.
 
@@ -17,14 +17,20 @@ Special thanks to:
 * r-a-y for compatibility with older versions of WPMU and XML-RPC
 * andykillen for introducing translatable strings and the Dutch translation
 
-Translations available for:
+Translations included for:
 
-* German
-* Polish
+* Czech
+* Dutch
 * Finnish
-* Swedish
-* Persian
 * French
+* German
+* Hungarian
+* Lithuanian
+* Persian
+* Polish
+* Portuguese (Brazil)
+* Swedish
+
 
 == Installation ==
 1. Unzip and upload `/wp-email-login/` to the `/wp-content/plugins/` directory
@@ -32,6 +38,34 @@ Translations available for:
 1. Log out, log in again using the email address associated with your WordPress account.
 
 == Changelog ==
+= 4.5 =
+* Don't attempt to override authentication if a WP_User object exists. Fixes compat with Jetpack (and potentially other auth-related plugins)
+
+= 4.4 =
+* Work around a few encoding issues in WP to handle weird characters in emails (' and &), props Mykle
+
+= 4.3.5 =
+* Fix conditional inclusion of label JS so that it appears on all wp-login.php pages. Props James B. of http://cloudshout.co.uk
+
+= 4.3.4 =
+* Add a conditional in the label-changing JS to avoid errors in some cases
+* Only output the JS on the wp-login.php page to avoid JS errors as well
+
+= 4.3.3 =
+* Add Bengalia translation, props S. M. Mehdi Akram - http://www.shamokaldarpon.com
+
+= 4.3.2 =
+* Add Hungarian translation, props Peter: Surbma - http://surbma.hu
+
+= 4.3.1 =
+* Add Brazilian Portuguese translation, props Alysson http://profiles.wordpress.org/alyssonweb
+
+= 4.3 =
+* Check user_status to confirm the user is verified before allowing authentication (used in BuddyPress). Props Steve Holland. If you have a plugin which is using user_status to store some non-zero value, then those users will *not* be able to log in using their email address with this update.
+
+= 4.2.3 =
+* Add Lithuanian translation, props Vincent G, from http://www.host1free.com
+
 = 4.2.2 =
 * Add Czech translation, props Zaantar
 
