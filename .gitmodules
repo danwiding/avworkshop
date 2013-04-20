@@ -1,0 +1,3 @@
+[submodule "basepress"]
+	path = basepress
+	url = git@github.com:danwiding/basepress.git

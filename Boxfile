@@ -1,0 +1,25 @@
+web1: #component type & number
+  name: wordpress            #component settings
+  shared_writable_dirs:
+    - basepress/wordpress/wp-content/uploads/
+    - basepress/wordpress/wp-content/blogs.dir/
+  document_root: basepress/wordpress/
+  php_version: 5.3.10
+  php_extensions:
+    - mysql
+    - eaccelerator
+    - curl
+    - pdo_mysql
+  after_build:
+    - "cp config/wordpress-app/wp-config-pagodabox.php config/wordpress-app/wp-config-local.php"
+    - "cp config/sensitive/wp-sensitive-empty.json config/sensitive/wp-sensitive-local.json"
+    - "cp config/htaccess/.htaccess-pagodabox basepress/wordpress/.htaccess"
+    - "cp -r plugins basepress/wordpress/wp-content/plugins"
+    - "cp -r themes basepress/wordpress/wp-content/themes"
+    - "cp -r basepress/junto-common/junto-content basepress/wordpress/wp-content/junto-content"
+  after_deploy:
+    - "php basepress/tools/mysql-php-migrations/migrate.php latest"
+
+db1: #component type & number
+  name: wordpress-db            #component settings
+  type: mysql
