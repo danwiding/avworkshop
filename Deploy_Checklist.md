@@ -8,3 +8,5 @@
 [] Set up addon domain to point to new wordpress install
 [] Create db via wordpress autoinstaller
 [] Activate theme
+
+//not relevant for non-capistrano projects
