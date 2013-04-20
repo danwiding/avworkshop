@@ -1,4 +1,16 @@
 <?php get_header(); ?>
+<?php
+    $lendUserModel = LendUserModel::GetCurrentUser();
+    if($lendUserModel!=null){
+        if(empty($lendUserModel->stripe_token)){
+            wp_redirect(home_url('stripe/'));
+            return;
+        }
+        if($lendUserModel->idScanStatus!='SUCCESS' || ($lendUserModel->verificationStatus!='APPROVED_VERIFIED' && !empty($lendUserModel->verificationStatus ))){
+            wp_redirect(home_url('netverify/'));
+        }
+    }
+?>
 			
 			<div id="content" class="clearfix row-fluid">
 			
