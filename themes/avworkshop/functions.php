@@ -678,6 +678,9 @@ function get_wpbs_theme_options(){
       }
 } // end get_wpbs_theme_options function
 
-
+junto_loader::LoadJuntoMVC(dirname(__FILE__));
+//AjaxController::RegisterRequestControllerAJAX();
+//GfModsController::RegisterMods();
+//WpModsController::RegisterMods();
 
 ?>
