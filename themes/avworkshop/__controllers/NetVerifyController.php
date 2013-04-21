@@ -58,7 +58,7 @@ class NetVerifyController {
     //            throw new Exception(print_r($response,true));
         }
         $responseObject=json_decode($response);
-        $lendUserModel->jumioIdScanReference=$responseObject->jumioScanReference;
+        $lendUserModel->jumioIdScanReference=$responseObject->jumioIdScanReference;
         $lendUserModel->Save();
         ?>
         <script type="text/javascript" src="https://resources.netverify.com/widget/jumio-verify/2.0/iframe-script.js">
