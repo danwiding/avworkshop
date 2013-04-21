@@ -29,4 +29,22 @@ class LendUserModel extends lends_user{
         }
         return null;
     }
+
+    /**
+     * @param $scanReference
+     * @return LendUserModel
+     */
+    public static function GetUserByScanReference($scanReference){
+        $lendUserModel = new LendUserModel();
+        $lendUserModelList= $lendUserModel->GetList(array(
+                array('merchantIdScanReference','=',$scanReference)
+            )
+        );
+        if(empty($lendUserModelList)){
+            return null;
+        }
+        else{
+            return $lendUserModelList[0];
+        }
+    }
 }

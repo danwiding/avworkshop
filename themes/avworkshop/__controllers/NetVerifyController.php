@@ -31,6 +31,11 @@ class NetVerifyController {
         $netVerifyData->callbackUrl=home_url('netverifycallback/','https');
         $netVerifyData->successUrl=home_url('netverifysuccess/','https');
 
+        $lendUserModel = LendUserModel::GetCurrentUser();
+        $lendUserModel->merchantIdScanReference=$netVerifyData->merchantIdScanReference;
+        $lendUserModel->customerId=$netVerifyData->customerID;
+        $lendUserModel->Save();
+
         $url = 'https://netverify.com/api/netverify/v2/initiateNetverify';
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);

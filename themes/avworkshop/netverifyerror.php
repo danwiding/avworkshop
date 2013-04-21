@@ -8,4 +8,4 @@
 
 ?>
 <h2>Error Page</h2>
-<a href="/netverify">Refresh</a>
+<a href="/netverify" target="_top">Refresh</a>
