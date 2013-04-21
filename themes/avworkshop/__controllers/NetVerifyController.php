@@ -65,7 +65,7 @@ class NetVerifyController {
         </script>
         <script type="text/javascript">
             /*<![CDATA[*/
-            /* <?=print_r(json_encode($netVerifyData))?>*/
+            /* <?=print_r(json_encode($responseObject))?>*/
             JumioClient.setVars({
                 locale: "en",
                 authorizationToken: "<?=$responseObject->authorizationToken?>"
