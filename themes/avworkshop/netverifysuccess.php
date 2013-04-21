@@ -11,5 +11,19 @@ if(!array_key_exists('jumioIdScanReference',$_GET) ||! array_key_exists('idScanS
 $model = LendUserModel::GetUserByJumioScanReference($_GET['jumioIdScanReference']);
 $model->idScanStatus=$_GET['idScanStatus'];
 ?>
-<h2>Success Page</h2>
-<a href="/stripe" target="_top">Go somewhere</a>
+<h2>You've successfully uploaded your ID</h2>
+<?php if(emtpy($model->stripe_token)):?>
+<h2>One last step</h2>
+<form action="/stripe" method="POST">
+    <script
+        src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
+        data-key="<?=STRIPE_PUBLISHABLE_KEY?>"
+        data-name="Save Credit Card"
+        data-label="Save Credit Card"
+        data-description="Card will not be charged until you rent"
+        data-image="/128x128.png">
+    </script>
+</form>
+<?php else:?>
+<a href="/category/products/" target="_top">Click to submit</a>
+<?php endif;?>

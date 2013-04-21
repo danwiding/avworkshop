@@ -1,4 +1,11 @@
 <?php get_header(); ?>
+    <script type="text/javascript">
+        <!--
+        if (top.location!= self.location) {
+            top.location = self.location.href
+        }
+        //-->
+    </script>
 			
 			<?php
 				$blog_hero = of_get_option('blog_hero');
