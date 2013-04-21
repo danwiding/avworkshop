@@ -5,3 +5,7 @@
  * Time: 9:26 PM
  *
  */
+
+?>
+<h2>Success Page</h2>
+<a href="/stripe">Go somewhere</a>

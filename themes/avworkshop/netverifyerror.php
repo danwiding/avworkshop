@@ -5,3 +5,7 @@
  * Time: 9:26 PM
  *
  */
+
+?>
+<h2>Error Page</h2>
+<a href="/netverify">Refresh</a>
