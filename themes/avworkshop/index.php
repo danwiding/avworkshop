@@ -144,10 +144,7 @@ input[type="color"] {
 
 }
 
-.item { width: 20%; }
-.item.w2 { width: 21%; }
-.item.w3 { width: 22%; }
-.item.w4 { width: 23%; }
+.item { width: 24%; }
 
 .icon-white {background-image: url("http://f.cl.ly/items/0T012X21310q1Q272H0R/glyphicons-halflings-white.png");}
 .icon-search {
@@ -156,6 +153,7 @@ input[type="color"] {
 
 img.centered {   display: block;   margin-left: auto;   margin-right: auto; }
 
+.mb4:hover{ opacity: .8;}
 
 
 	</style>
@@ -169,7 +167,13 @@ img.centered {   display: block;   margin-left: auto;   margin-right: auto; }
 		<div id="page-wrap">
 
 
-			
+    <script language="JavaScript" type="text/javascript">
+        <!--               
+            if (top.location != location) {
+                top.location.href = document.location.href ;
+            }
+        -->
+    </script>
 
 <div id="homepage-hero">
 	<div class="container">
@@ -189,12 +193,11 @@ img.centered {   display: block;   margin-left: auto;   margin-right: auto; }
 </div>
 
     <div id="container" class="js-packery"
-         data-packery-options='{ "itemSelector": ".item", "gutter": 10 }'>
+         data-packery-options='{ "itemSelector": ".item", "gutter": 5 }'>
                 <div class="item"><img src="http://distilleryimage6.ak.instagram.com/d261cd90aa8e11e2b2a722000aaa0952_7.jpg" /></div>
                 <div class="item w2"><img src="http://distilleryimage6.ak.instagram.com/13963536aa8e11e2918122000a9f4d8a_7.jpg" /></div>
                 <div class="item w3"><img src="http://distilleryimage11.ak.instagram.com/aef775bcaa8e11e2aaa822000a1fb0dd_7.jpg" /></div>
                 <div class="item w4"><img src="http://distilleryimage6.ak.instagram.com/d24486bcaa8a11e2b41022000a9f1899_7.jpg" /></div>
-
 </div>			
 </div>
 
@@ -238,7 +241,12 @@ img.centered {   display: block;   margin-left: auto;   margin-right: auto; }
     var pckry = new Packery( container, {
         // options
         itemSelector: '.item',
-        gutter: 10
+        gutter: 5
+    });
+
+    // layout Packery after all images have loaded
+    imagesLoaded( container, function() {
+        pckry.layout();
     });
 
 </script>
