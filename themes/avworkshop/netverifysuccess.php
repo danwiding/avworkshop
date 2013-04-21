@@ -12,7 +12,7 @@ $model = LendUserModel::GetUserByJumioScanReference($_GET['jumioIdScanReference'
 $model->idScanStatus=$_GET['idScanStatus'];
 ?>
 <h2>You've successfully uploaded your ID</h2>
-<?php if(emtpy($model->stripe_token)):?>
+<?php if(empty($model->stripe_token)):?>
 <h2>One last step</h2>
 <form action="/stripe" method="POST">
     <script
