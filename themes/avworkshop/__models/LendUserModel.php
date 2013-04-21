@@ -47,4 +47,21 @@ class LendUserModel extends lends_user{
             return $lendUserModelList[0];
         }
     }
+    /**
+     * @param $scanReference
+     * @return LendUserModel
+     */
+    public static function GetUserByJumioScanReference($scanReference){
+        $lendUserModel = new LendUserModel();
+        $lendUserModelList= $lendUserModel->GetList(array(
+                array('jumioIdScanReference','=',$scanReference)
+            )
+        );
+        if(empty($lendUserModelList)){
+            return null;
+        }
+        else{
+            return $lendUserModelList[0];
+        }
+    }
 }

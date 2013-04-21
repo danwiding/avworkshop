@@ -28,7 +28,7 @@ class Migration_2013_04_20_21_45_11 extends MpmMigration
 		");
 
         $pdo->exec("
-        ALTER TABLE `avworkshop`.`lends_user`
+        ALTER TABLE `lends_user`
 ADD UNIQUE INDEX `unique_merchantidscanreference` (`merchantidscanreference` ASC),
 ADD UNIQUE INDEX `unique_wp_users` (`wp_user` ASC);
 		");

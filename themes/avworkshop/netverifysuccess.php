@@ -6,9 +6,9 @@
  *
  */
 //merchant scan reference different on success redirect
-if(!array_key_exists('merchantScanReference',$_GET) ||! array_key_exists('idScanStatus',$_GET))
+if(!array_key_exists('jumioIdScanReference',$_GET) ||! array_key_exists('idScanStatus',$_GET))
     wp_redirect(home_url());
-$model = LendUserModel::GetUserByScanReference($_GET['merchantScanReference']);
+$model = LendUserModel::GetUserByJumioScanReference($_GET['jumioIdScanReference']);
 $model->idScanStatus=$_GET['idScanStatus'];
 ?>
 <h2>Success Page</h2>
