@@ -144,6 +144,11 @@ input[type="color"] {
 
 }
 
+.item { width: 20%; }
+.item.w2 { width: 21%; }
+.item.w3 { width: 22%; }
+.item.w4 { width: 23%; }
+
 .icon-white {background-image: url("http://f.cl.ly/items/0T012X21310q1Q272H0R/glyphicons-halflings-white.png");}
 .icon-search {
   background-position: -48px 0;
@@ -172,7 +177,7 @@ img.centered {   display: block;   margin-left: auto;   margin-right: auto; }
 		<h2>Find local AV equipment to rent</h2>
 		<div class="mb2">
 
-			<i class="icon-search icon-white"></i> <form class="navbar-search animated fadeInUp" role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
+			<form class="navbar-search animated fadeInUp" role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
 								<input name="s" id="s" type="text" class="search-query" autocomplete="off" placeholder= "<?php _e('Search','bonestheme'); ?>" data-provide="typeahead" data-items="4" data-source='<?php echo $typeahead_data; ?>'>
 							</form>
 			
@@ -183,10 +188,13 @@ img.centered {   display: block;   margin-left: auto;   margin-right: auto; }
 	</div>
 </div>
 
-<div class="container">
-                <div class="item">...</div>
-                <div class="item w2">...</div>
-                <div class="item">...</div>
+    <div id="container" class="js-packery"
+         data-packery-options='{ "itemSelector": ".item", "gutter": 10 }'>
+                <div class="item"><img src="http://distilleryimage6.ak.instagram.com/d261cd90aa8e11e2b2a722000aaa0952_7.jpg" /></div>
+                <div class="item w2"><img src="http://distilleryimage6.ak.instagram.com/13963536aa8e11e2918122000a9f4d8a_7.jpg" /></div>
+                <div class="item w3"><img src="http://distilleryimage11.ak.instagram.com/aef775bcaa8e11e2aaa822000a1fb0dd_7.jpg" /></div>
+                <div class="item w4"><img src="http://distilleryimage6.ak.instagram.com/d24486bcaa8a11e2b41022000a9f1899_7.jpg" /></div>
+
 </div>			
 </div>
 
@@ -198,11 +206,21 @@ img.centered {   display: block;   margin-left: auto;   margin-right: auto; }
 			<div class="container">
 							
 				<div class="clearfix bt blight pt4">
+
+                    <p class="float-left">
+
+                        <a title="Twitter" class="block mb4" href="https://twitter.com/" target="_blank">
+
+                            <img class="native-width" alt="twitter" width="29" height="29" src="http://f.cl.ly/items/3c1W3x2Q0h3r4330002G/twitter.png"></a>
+
+                    </p>
+
+
 					<p class="float-right">
 
 					<a title="Powered by Stripe" class="block mb4" href="https://stripe.com/" target="_blank">
 
-							<img class="native-width" src="http://f.cl.ly/items/1Y150a2I3a472x2w0S0C/powered-by-stripe.png" alt="powered-by-stripe" width="120" height="32"></a>
+							<img src="http://f.cl.ly/items/1Y150a2I3a472x2w0S0C/powered-by-stripe.png" alt="powered-by-stripe" width="120" height="32"></a>
 
 						</p>
 				</div>
@@ -212,6 +230,18 @@ img.centered {   display: block;   margin-left: auto;   margin-right: auto; }
 		
 	</body>
 
-<script src="/path/to/packery.pkgd.min.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/library/js/packery.pkgd.min.js"/>
+
+<script>
+
+    var container = document.querySelector('#container');
+    var pckry = new Packery( container, {
+        // options
+        itemSelector: '.item',
+        gutter: 10
+    });
+
+</script>
+
 
 </html>
