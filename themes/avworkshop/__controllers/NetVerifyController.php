@@ -22,19 +22,19 @@ class NetVerifyController {
             "Accept: application/json",
             "Authorization: Basic OTI3YWVlMmEtMzk1YS00NWMzLWE2OWEtYjc5OGJiOTA1NTU4OnM2Q21wR05hRW5GcnRZQUlJaWlTRWhaUW5jMjE3ejlM"
         );
+        $lendUserModel = LendUserModel::GetCurrentUser();
+        if(empty($lendUserModel->customerId))
+            $lendUserModel->customerId=UUID::v5combo($this->rgget('REMOTE_ADDR',$_SERVER) . $this->rgget('HTTP_USER_AGENT',$_SERVER));
+
         $netVerifyData = new stdClass();
         $netVerifyData->merchantIdScanReference=UUID::v5combo($this->rgget('HTTP_USER_AGENT',$_SERVER).$this->rgget('REMOTE_ADDR',$_SERVER));
-        $netVerifyData->customerID=UUID::v5combo($this->rgget('REMOTE_ADDR',$_SERVER) . $this->rgget('HTTP_USER_AGENT',$_SERVER));
-        $netVerifyData->country='USA';
+        $netVerifyData->customerID=$lendUserModel->customerId;
         $netVerifyData->authorizationTokenLifetime=3000;
         $netVerifyData->errorUrl=home_url('netverifyerror/','https');
         $netVerifyData->callbackUrl=home_url('netverifycallback/','https');
         $netVerifyData->successUrl=home_url('netverifysuccess/','https');
 
-        $lendUserModel = LendUserModel::GetCurrentUser();
         $lendUserModel->merchantIdScanReference=$netVerifyData->merchantIdScanReference;
-        $lendUserModel->customerId=$netVerifyData->customerID;
-
 
         $url = 'https://netverify.com/api/netverify/v2/initiateNetverify';
         $ch = curl_init();
@@ -65,7 +65,6 @@ class NetVerifyController {
         </script>
         <script type="text/javascript">
             /*<![CDATA[*/
-            /* <?=print_r(json_encode($responseObject))?>*/
             JumioClient.setVars({
                 locale: "en",
                 authorizationToken: "<?=$responseObject->authorizationToken?>"
