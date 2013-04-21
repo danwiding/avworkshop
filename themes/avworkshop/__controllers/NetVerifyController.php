@@ -34,7 +34,7 @@ class NetVerifyController {
         $lendUserModel = LendUserModel::GetCurrentUser();
         $lendUserModel->merchantIdScanReference=$netVerifyData->merchantIdScanReference;
         $lendUserModel->customerId=$netVerifyData->customerID;
-        $lendUserModel->Save();
+
 
         $url = 'https://netverify.com/api/netverify/v2/initiateNetverify';
         $ch = curl_init();
@@ -58,6 +58,8 @@ class NetVerifyController {
     //            throw new Exception(print_r($response,true));
         }
         $responseObject=json_decode($response);
+        $lendUserModel->jumioIdScanReference=$responseObject->jumioScanReference;
+        $lendUserModel->Save();
         ?>
         <script type="text/javascript" src="https://resources.netverify.com/widget/jumio-verify/2.0/iframe-script.js">
         </script>
