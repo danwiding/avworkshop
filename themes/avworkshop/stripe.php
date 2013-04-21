@@ -7,8 +7,7 @@
  */
 if($_POST){
     $userModel = LendUserModel::GetCurrentUser();
-    $userModel->stripe_token=$_POST['stripeToken'];
-    $userModel->Save();
+    $userModel->SetStripeCustomer($_POST['stripeToken']);
     wp_redirect(home_url());
 }
 ?>

@@ -4,7 +4,9 @@
  * Date: 4/20/13
  * Time: 4:54 PM
  *
- */ 
+ */
+
+require_once(LIB_PATH .  '/stripe-php/lib/Stripe.php');
 class LendUserModel extends lends_user{
 
     protected $tableName = "lends_user";
@@ -63,5 +65,16 @@ class LendUserModel extends lends_user{
         else{
             return $lendUserModelList[0];
         }
+    }
+
+    public function SetStripeCustomer($token){
+        Stripe::setApiKey(STRIPE_SECRET_KEY);
+
+        $stripeCustomer = Stripe_Customer::create(array(
+            "description" => "Customer for {$this->wp_user}",
+            "card" => $token // obtained with Stripe.js
+        ));
+        $this->stripe_token=$stripeCustomer->id;
+        $this->Save();
     }
 }
