@@ -54,9 +54,10 @@ body.admin-bar .navbar-fixed-top{
 }
 
 .navbar .brand{
-	color: #000 !important;
+	color: #fff !important;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 30px rgba(255, 255, 255, 0.125);
 	font-weight: bold !important;
+	font-family: 'Lato' !important, sans-serif;
 }
 
 .nav-container{
@@ -587,4 +588,13 @@ blockquote.pull-left{
 		padding-left: 0;
 		padding-right: 0;
 	}
-}
+
+@media screen and (max-width: 767px) {
+  .show-on-mobile {
+    display: inherit !important;
+  }
+
+  .hide-on-mobile {
+    display: none !important;
+  }
+
