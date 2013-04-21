@@ -14,7 +14,7 @@ $model->idScanStatus=$_GET['idScanStatus'];
 <h2>You've successfully uploaded your ID</h2>
 <?php if(empty($model->stripe_token)):?>
 <h2>One last step. Save your credit card below. You will not be charged until you rent an item.</h2>
-<form action="/stripe" method="POST">
+<form action="/stripe/" method="POST">
     <script
         src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
         data-key="<?=STRIPE_PUBLISHABLE_KEY?>"

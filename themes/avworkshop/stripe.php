@@ -12,7 +12,7 @@ if($_POST){
 }
 ?>
 
-<form action="/stripe" method="POST">
+<form action="/stripe/" method="POST">
     <script
         src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
         data-key="<?=STRIPE_PUBLISHABLE_KEY?>"
