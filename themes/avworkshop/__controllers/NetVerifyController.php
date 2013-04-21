@@ -23,7 +23,7 @@ class NetVerifyController {
             "Authorization: Basic OTI3YWVlMmEtMzk1YS00NWMzLWE2OWEtYjc5OGJiOTA1NTU4OnM2Q21wR05hRW5GcnRZQUlJaWlTRWhaUW5jMjE3ejlM"
         );
         $netVerifyData = new stdClass();
-        $netVerifyData->merchantScanReference=UUID::v5combo($this->rgget('HTTP_USER_AGENT',$_SERVER).$this->rgget('REMOTE_ADDR',$_SERVER));
+        $netVerifyData->merchantIdScanReference=UUID::v5combo($this->rgget('HTTP_USER_AGENT',$_SERVER).$this->rgget('REMOTE_ADDR',$_SERVER));
         $netVerifyData->customerID=UUID::v5combo($this->rgget('REMOTE_ADDR',$_SERVER) . $this->rgget('HTTP_USER_AGENT',$_SERVER));
         $netVerifyData->country='USA';
         $netVerifyData->authorizationTokenLifetime=3000;
